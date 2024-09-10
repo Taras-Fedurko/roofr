@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import { useFetchPokemons } from './hooks/useFetchPokemons';
+
+import Battle from './components/Battle'
+
 function App() {
+  const { loading, error, pokemons } = useFetchPokemons();
+
+  if (loading) {
+    return (<>Loading...</>);
+  }
+
+  if (error) {
+    return <>{error}</>;
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Battle pokemons={pokemons} />
     </div>
   );
 }
