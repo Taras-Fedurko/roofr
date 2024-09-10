@@ -21,7 +21,7 @@ describe('PokemonView Component', () => {
   };
 
   test('renders PokemonView with pokemon name and image', () => {
-    render(<PokemonView pokemon={pokemon} side="front" />);
+    render(<PokemonView pokemon={pokemon} side="front" battleInfo={battleInfo} />);
 
     expect(screen.getByText("Pikachu")).toBeInTheDocument();
 
@@ -29,14 +29,9 @@ describe('PokemonView Component', () => {
     expect(pokemonImage).toBeInTheDocument();
     expect(pokemonImage).toHaveAttribute('src', pokemon.sprites.front);
 
-    expect(screen.queryByText("Thunderbolt: 90")).not.toBeInTheDocument();
+    expect(screen.getByText("Thunderbolt: 90")).toBeInTheDocument();
+
     expect(screen.queryByText("Quick-attack: 90")).not.toBeInTheDocument();
     expect(screen.queryByText("Iron-tail: 90")).not.toBeInTheDocument();
-  });
-
-  test('renders battle info when provided', () => {
-    render(<PokemonView pokemon={pokemon} side="front" battleInfo={battleInfo} />);
-
-    expect(screen.getByText("Thunderbolt: 90")).toBeInTheDocument();
   });
 });

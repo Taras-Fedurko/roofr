@@ -59,11 +59,11 @@ export const useStartTheBattle = (pokemons: Pokemon[]) => {
       ]);
   
       const battleInfo = {
-        [firstPokemon.name]: {
+        [firstPokemonName]: {
           moveName: firstPokemonMove,
           movePower: firstPokemonPower,
         },
-        [secondPokemon.name]: {
+        [secondPokemonName]: {
           moveName: secondPokemonMove,
           movePower: secondPokemonPower,
         },
@@ -73,10 +73,10 @@ export const useStartTheBattle = (pokemons: Pokemon[]) => {
   
       if (firstPokemonPower > secondPokemonPower) {
         setBattleResult(`
-          ${withFirstUpperCase(firstPokemon.name)} lands a decisive blow with ${firstPokemonMove}, knocking out ${withFirstUpperCase(secondPokemon.name)}!
+          ${withFirstUpperCase(firstPokemonName)} lands a decisive blow with ${firstPokemonMove}, knocking out ${withFirstUpperCase(secondPokemonName)}!
           `);
       } else if (secondPokemonPower > firstPokemonPower) {
-        setBattleResult(`${withFirstUpperCase(secondPokemon.name)} lands a decisive blow with ${secondPokemonMove}, knocking out ${withFirstUpperCase(firstPokemon.name)}!`);
+        setBattleResult(`${withFirstUpperCase(secondPokemonName)} lands a decisive blow with ${secondPokemonMove}, knocking out ${withFirstUpperCase(firstPokemonName)}!`);
       } else {
         setBattleResult("Draw!");
       }
