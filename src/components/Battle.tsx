@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useStartTheBattle } from '../hooks/useStartTheBattle';
 import { Pokemon } from '../types';
 import styles from './Battle.module.css';
@@ -28,22 +29,14 @@ const Battle = ({ pokemons }: BattleProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.pokemonsBattle}>
-        {!!selectedPokemons.length && (
-          <>
-            <PokemonView
-              key={selectedPokemons[0].name}
-              pokemon={selectedPokemons[0]}
-              side="front"
-              battleInfo={battleInfo?.[selectedPokemons[0].name]}
+        {selectedPokemons.map((pokemon, index) => (
+          <PokemonView
+              key={pokemon.name}
+              pokemon={pokemon}
+              side={index === 0 ? 'front' : 'back'}
+              battleInfo={battleInfo?.[pokemon.name]}
             />
-            <PokemonView
-              key={selectedPokemons[1].name}
-              pokemon={selectedPokemons[1]}
-              side="back"
-              battleInfo={battleInfo?.[selectedPokemons[1].name]}
-            />
-          </>
-        )}
+        ))}
       </div>
 
       <strong>Battle Log</strong>
@@ -51,10 +44,7 @@ const Battle = ({ pokemons }: BattleProps) => {
         <div className={styles.battleLog}>
           <p>{battleResult}</p>
         </div>
-        <button
-          disabled={loading}
-          onClick={() => startBattle()}
-        >
+        <button disabled={loading}onClick={startBattle}>
             Start battle
           </button>
       </div>
