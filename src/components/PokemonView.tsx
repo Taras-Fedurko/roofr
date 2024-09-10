@@ -1,5 +1,5 @@
 import { MoveBattleInfo, PokemonBattleInfo, PokemonStripes } from '../types';
-import { withFirstUpperCalse } from '../utils/withFirstUpperCalse';
+import { withFirstUpperCase } from '../utils/withFirstUpperCase';
 import styles from './PokemonView.module.css';
 
 interface PokemonViewProps {
@@ -15,10 +15,10 @@ const PokemonView = ({ pokemon, side, battleInfo }: PokemonViewProps) => {
         <img src={pokemon.sprites[side]} alt={pokemon.name} />
       </div>
       <div className={`${styles.pokemonInfo} ${styles[side]}`}>
-        <p className={styles.pokemonName}>{withFirstUpperCalse(pokemon.name)}</p>
+        <p className={styles.pokemonName}>{withFirstUpperCase(pokemon.name)}</p>
         {battleInfo && (
           <div className={`${styles.pokemonAttack} ${styles[side]}`}>
-            <p>{withFirstUpperCalse(battleInfo.moveName)}: {battleInfo.movePower}</p>
+            <p>{withFirstUpperCase(battleInfo.moveName)}: {battleInfo.movePower}</p>
           </div>
         )}
       </div>

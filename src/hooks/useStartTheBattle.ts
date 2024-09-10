@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 import { fetchMovePower, fetchPokemonInfo } from '../utils/api';
 import { PokemonBattleInfo, MoveBattleInfo, Pokemon } from '../types';
-import { withFirstUpperCalse } from '../utils/withFirstUpperCalse';
+import { withFirstUpperCase } from '../utils/withFirstUpperCase';
 import { randomExcluded } from '../utils/randomExcluded';
 
   // fetch selected pokemon Info
@@ -73,10 +73,10 @@ export const useStartTheBattle = (pokemons: Pokemon[]) => {
   
       if (firstPokemonPower > secondPokemonPower) {
         setBattleResult(`
-          ${withFirstUpperCalse(firstPokemon.name)} lands a decisive blow with ${firstPokemonMove}, knocking out ${withFirstUpperCalse(secondPokemon.name)}!
+          ${withFirstUpperCase(firstPokemon.name)} lands a decisive blow with ${firstPokemonMove}, knocking out ${withFirstUpperCase(secondPokemon.name)}!
           `);
       } else if (secondPokemonPower > firstPokemonPower) {
-        setBattleResult(`${withFirstUpperCalse(secondPokemon.name)} lands a decisive blow with ${secondPokemonMove}, knocking out ${withFirstUpperCalse(firstPokemon.name)}!`);
+        setBattleResult(`${withFirstUpperCase(secondPokemon.name)} lands a decisive blow with ${secondPokemonMove}, knocking out ${withFirstUpperCase(firstPokemon.name)}!`);
       } else {
         setBattleResult("Draw!");
       }
